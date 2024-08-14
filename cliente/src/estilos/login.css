@@ -1,0 +1,40 @@
+  .login-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-image: url('https://64.media.tumblr.com/5606293666ba77e120a9fcd9228022a1/tumblr_ozhmaeWhdW1rnbw6mo1_540.gif');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  
+  .login-form-group {
+    margin-bottom: 20px;
+  }
+  
+  .login-button {
+    background-color: #006de1;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border: 2px solid #006de1;
+    text-align: center;
+    border-radius: 10px;
+    color: white;
+    margin-top: 50px;
+  }
+  
+  .button:hover {
+    background-color: #52a5ff;
+  }
+  
+  .login-wrapper {
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    color: white;
+    width: 420px;
+    padding: 20px 40px;
+    border-radius: 10px;
+  }
+  

@@ -1,0 +1,156 @@
+html {
+  height: 100%;
+  width: 100%;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body{
+  background-image: url('https://i.pinimg.com/originals/ed/a8/d6/eda8d676aad6956e911422664490b3f8.gif');
+  background-size: cover;
+  background-repeat: repeat;
+  background-position: center;
+}
+
+header {
+  background: #002856;
+  color: white;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+}
+
+.header-left .logo {
+  max-height: 80px;
+  margin-right: 20px;
+  filter: grayscale(100%);
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+}
+
+.header-right.login {
+  display: flex;
+  align-items: center;
+}
+
+.header-right .profile {
+  font-size: 2em;
+}  
+
+.header-right a {
+  color: white;
+  text-decoration: none;
+  margin-left: 15px;
+  display: flex;
+  align-items: center;
+}
+
+.navbar-nav .nav-link {
+  color: white;
+}
+
+.carousel img {
+  max-height: 500px;
+  object-fit: cover;
+  margin-bottom: 20px;
+}
+
+.img{
+  padding-top: 25px;
+  width: 60%;
+}
+
+.banner{
+  text-align: center;
+  margin: o auto;
+}
+
+.map-responsive{
+    overflow:hidden;
+    padding-bottom:56.25%;
+    position:relative;
+    height:0;
+}
+
+.map-responsive iframe{
+    left:0;
+    top:0;
+    height:100%;
+    width:100%;
+    position:absolute;
+}
+
+.conocenos{
+  display: flex;
+  color: white;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 100px;
+}
+
+.redesS{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  place-items: center;
+}
+
+.redes{
+  max-width: 100px;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+h3{
+  background-color: #002856;
+  border: 2px solid white;
+  padding: 10px;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  max-width: 35%;
+  margin: auto;
+}
+
+h4{
+  background-color: #002856;
+  border: 2px solid white;
+  padding: 10px;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  max-width: 50%;
+  margin: auto;
+}
+
+.card {
+  width: auto;
+  height: auto;
+  margin: 10px;
+  border-radius: 25px;
+  border: 2px solid #002856;
+}
+
+.card img {
+  max-height: 200px;
+  object-fit: cover;
+}
+
+.container .row .col-md-4 .card {
+  margin-bottom: 20px;
+}
+
+footer {
+  background: #002856;
+  color: white;
+  padding: 10px 0;
+  text-align: center;
+}
