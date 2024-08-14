@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useUser } from './App';
 import './estilos/login.css';
 
 const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const { setUserID } = useUser();
   const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
@@ -27,13 +29,15 @@ const Login = () => {
       const data = await response.json();
 
       if (data.success) {
-        navigate('/');
+        localStorage.setItem('userID', data.userID); // Guarda el userID en localStorage
+        setUserID(data.userID); // Actualiza el userID en el contexto
+        navigate('/'); // Redirige a la página principal u otra ruta
       } else {
         alert(data.message);
       }
     } catch (error) {
-      console.error('Error en la solicitud:', error);
-      alert('Hubo un problema con la solicitud. Inténtalo nuevamente.');
+      console.error('Error al iniciar sesión:', error);
+      alert('Hubo un error al iniciar sesión.');
     }
   };
 

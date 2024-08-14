@@ -51,12 +51,14 @@ app.post('/login', (req, res) => {
     }
 
     if (result.length > 0) {
-      return res.status(200).json({ success: true, message: "Inicio de sesión exitoso" });
+      const userID = result[0].id;
+      return res.status(200).json({ success: true, message: "Inicio de sesión exitoso", userID });
     } else {
       return res.status(401).json({ success: false, message: "Usuario o contraseña incorrectos" });
     }
   });
 });
+
 
 app.post('/register', (req, res) => {
   const { correo, username, password } = req.body;
@@ -77,5 +79,43 @@ app.post('/register', (req, res) => {
         return res.status(201).json({ success: true, message: "Registro exitoso" });
       });
     }
+  });
+});
+
+app.get("/perfil/:id", (req, res) => {
+  const { id } = req.params;
+  const sql = "SELECT * FROM datos_users WHERE id = ?";
+  db.query(sql, [id], (err, result) => {
+    if (err) return res.status(500).json({ message: "Server error" });
+    if (result.length === 0) return res.status(404).json({ message: "User not found" });
+    return res.json(result[0]);
+  });
+});
+
+app.put('/perfil/:id', (req, res) => {
+  const { id } = req.params;
+  const { correo, user, contraseña } = req.body;
+
+  const sql = "UPDATE datos_users SET correo = ?, user = ?, contraseña = ? WHERE id = ?";
+  db.query(sql, [correo, user, contraseña, id], (err, result) => {
+    if (err) {
+      return res.status(500).json({ message: "Error del servidor" });
+    }
+    return res.status(200).json({ success: true, message: "Datos actualizados exitosamente" });
+  });
+});
+
+app.delete('/perfil/:id', (req, res) => {
+  const { id } = req.params;
+
+  const sql = "DELETE FROM datos_users WHERE id = ?";
+  db.query(sql, [id], (err, result) => {
+    if (err) {
+      return res.status(500).json({ message: "Error del servidor" });
+    }
+    if (result.affectedRows === 0) {
+      return res.status(404).json({ message: "Usuario no encontrado" });
+    }
+    return res.status(200).json({ success: true, message: "Cuenta borrada exitosamente" });
   });
 });
