@@ -41,7 +41,7 @@ const AppContent = () => {
                   text="Descubre nuestros teclados mecánicos de alta calidad. Perfectos para gamers y profesionales."
                 />
                 <Card
-                  imgSrc="https://www.muycomputerpro.com/wp-content/uploads/2021/02/logitech_g_pro_x_mechanical_gaming_keyboard.jpg"
+                  imgSrc="https://www.profesionalreview.com/wp-content/uploads/2022/03/keychron-q1.jpg"
                   title="Teclados Custom"
                   text="Lleva tu experiencia de escritura y gaming al siguiente nivel con nuestros teclados Custom."
                 />
