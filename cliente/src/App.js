@@ -11,6 +11,8 @@ import { faSignOutAlt, faHome, faSearch } from '@fortawesome/free-solid-svg-icon
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Login from './login';
 import Register from './register';
+import Perfil from './perfil';
+import Carrito from './carrito';
 
 library.add(faSignOutAlt, faHome, faSearch);
 
@@ -59,6 +61,8 @@ const AppContent = () => {
         />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/perfil" element={<Perfil />} />
+        <Route path="/carrito" element={<Carrito />} />
       </Routes>
 
       {!noHeaderFooterRoutes.includes(location.pathname) && <Footer />}

@@ -1,10 +1,13 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHome, faSearch } from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
 
 const NavBar = () => (
   <nav className="navbar navbar-dark navbar-expand-lg" style={{ backgroundColor: '#002856' }}>
-    <a className="navbar-brand" href="#"><FontAwesomeIcon icon={faHome} /></a>
+    <Link className="navbar-brand" to="/">
+      <FontAwesomeIcon icon={faHome} />
+    </Link>
     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span className="navbar-toggler-icon"></span>
     </button>
