@@ -57,3 +57,28 @@ app.post('/login', (req, res) => {
     }
   });
 });
+
+app.post('/register', (req, res) => {
+  const { correo, username, password } = req.body;
+
+  // Validar si el usuario ya existe
+  const checkUserQuery = "SELECT * FROM datos_users WHERE user = ?";
+  db.query(checkUserQuery, [username], (err, result) => {
+    if (err) {
+      return res.status(500).json({ message: "Error del servidor" });
+    }
+
+    if (result.length > 0) {
+      return res.status(400).json({ success: false, message: "El usuario ya existe" });
+    } else {
+      // Insertar nuevo usuario
+      const insertQuery = "INSERT INTO datos_users (correo, user, contraseña) VALUES (?, ?, ?)";
+      db.query(insertQuery, [correo, username, password], (err, result) => {
+        if (err) {
+          return res.status(500).json({ message: "Error al guardar el usuario" });
+        }
+        return res.status(201).json({ success: true, message: "Registro exitoso" });
+      });
+    }
+  });
+});

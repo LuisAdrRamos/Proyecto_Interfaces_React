@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './estilos/login.css';
 
 const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -25,7 +27,7 @@ const Login = () => {
       const data = await response.json();
 
       if (data.success) {
-        window.location.href = '/';
+        navigate('/'); // Redirige a la página principal después de un inicio de sesión exitoso
       } else {
         alert(data.message);
       }
@@ -38,7 +40,7 @@ const Login = () => {
   return (
     <div className="login-body">
       <div className="login-wrapper">
-      <h2 className="text-center mb-4">Inicio de Sesion</h2>
+        <h2 className="text-center mb-4">Inicio de Sesión</h2>
         <form onSubmit={handleSubmit} id="login-form">
           <div className="login-form-group">
             <label htmlFor="username">Usuario:</label>
@@ -63,12 +65,20 @@ const Login = () => {
           <div className="login-button">
             <button type="submit" className="btn btn-primary">Iniciar Sesión</button>
           </div>
-          <p class="text-center mt-3">¿No tienes una cuenta? <a href="register.html" id="registerLink">Registrate</a></p>
+          <p className="text-center mt-3">
+            ¿No tienes una cuenta?{' '}
+            <span
+              className="register-link"
+              onClick={() => navigate('/register')}
+              style={{ cursor: 'pointer', color: '#007bff', textDecoration: 'underline' }}
+            >
+              Regístrate
+            </span>
+          </p>
         </form>
       </div>
     </div>
   );
-  
 };
 
 export default Login;

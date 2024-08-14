@@ -10,19 +10,21 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { faSignOutAlt, faHome, faSearch } from '@fortawesome/free-solid-svg-icons';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Login from './login';
+import Register from './register';
 
 library.add(faSignOutAlt, faHome, faSearch);
 
 const AppContent = () => {
   const location = useLocation();
-
-  // Condición para mostrar u ocultar Header, NavBar y Footer
-  const shouldShowHeaderAndFooter = location.pathname !== '/login';
+  
+  // Rutas en las que no se deben mostrar Header, NavBar y Footer
+  const noHeaderFooterRoutes = ['/login', '/register'];
 
   return (
-    <>
-      {shouldShowHeaderAndFooter && <Header />}
-      {shouldShowHeaderAndFooter && <NavBar />}
+    <div>
+      {!noHeaderFooterRoutes.includes(location.pathname) && <Header />}
+      {!noHeaderFooterRoutes.includes(location.pathname) && <NavBar />}
+      
       <Routes>
         <Route 
           path="/" 
@@ -58,16 +60,18 @@ const AppContent = () => {
           } 
         />
         <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
       </Routes>
-      {shouldShowHeaderAndFooter && <Footer />}
-    </>
+
+      {!noHeaderFooterRoutes.includes(location.pathname) && <Footer />}
+    </div>
   );
 };
 
-const App = () => (
+const AppWrapper = () => (
   <Router>
     <AppContent />
   </Router>
 );
 
-export default App;
+export default AppWrapper;
