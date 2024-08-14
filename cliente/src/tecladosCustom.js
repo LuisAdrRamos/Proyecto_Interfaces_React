@@ -2,12 +2,12 @@ import React, { useContext } from "react";
 import CartContext from "./CartContext";
 
 const TecladosCustom = () => {
-    const { dispatch } = useContext(CartContext);
+  const { dispatch } = useContext(CartContext);
 
-    const handleAddToCart = (product) => {
-        dispatch({ type: 'ADD_PRODUCT', product });
-        alert('Producto agregado al carrito de compra')
-    };
+  const handleAddToCart = (product) => {
+    dispatch({ type: 'ADD_TO_CART', payload: product });
+    alert('Producto agregado al carrito de compra')
+  };
 
     return (
         <div>
