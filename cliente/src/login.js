@@ -27,7 +27,7 @@ const Login = () => {
       const data = await response.json();
 
       if (data.success) {
-        navigate('/'); // Redirige a la página principal después de un inicio de sesión exitoso
+        navigate('/');
       } else {
         alert(data.message);
       }

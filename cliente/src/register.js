@@ -32,7 +32,7 @@ const Register = () => {
 
         if (data.success) {
           alert('Registro exitoso');
-          navigate('/login'); // Redirige al usuario al login después del registro exitoso
+          navigate('/login');
         } else {
           alert(data.message);
         }

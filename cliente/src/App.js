@@ -16,8 +16,6 @@ library.add(faSignOutAlt, faHome, faSearch);
 
 const AppContent = () => {
   const location = useLocation();
-  
-  // Rutas en las que no se deben mostrar Header, NavBar y Footer
   const noHeaderFooterRoutes = ['/login', '/register'];
 
   return (
