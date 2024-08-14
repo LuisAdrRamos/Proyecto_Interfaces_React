@@ -72,7 +72,7 @@ const AppWrapper = () => {
   useEffect(() => {
     const storedUserID = localStorage.getItem('userID');
     if (storedUserID) {
-      setUserID(storedUserID); // Carga el userID desde localStorage al montar la aplicación
+      setUserID(storedUserID);
     }
   }, []);
 

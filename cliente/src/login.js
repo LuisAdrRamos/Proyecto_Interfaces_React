@@ -29,9 +29,9 @@ const Login = () => {
       const data = await response.json();
 
       if (data.success) {
-        localStorage.setItem('userID', data.userID); // Guarda el userID en localStorage
-        setUserID(data.userID); // Actualiza el userID en el contexto
-        navigate('/'); // Redirige a la página principal u otra ruta
+        localStorage.setItem('userID', data.userID);
+        setUserID(data.userID);
+        navigate('/');
       } else {
         alert(data.message);
       }
