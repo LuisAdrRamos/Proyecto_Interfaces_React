@@ -13,19 +13,21 @@
     margin-bottom: 20px;
   }
   
-  .login-button {
+  .btn.btn-primary {
     background-color: #006de1;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    border: 2px solid #006de1;
+    border: 2px solid #013b79;
     text-align: center;
     border-radius: 10px;
     color: white;
     margin-top: 50px;
-  }
-  
-  .button:hover {
+    padding: 10px 20px;
+    width: 100%;
+}
+
+.btn.btn-primary:hover {
     background-color: #52a5ff;
-  }
+}
   
   .login-wrapper {
     background: transparent;

@@ -79,9 +79,7 @@ const Register = () => {
               onChange={(e) => setPassword(e.target.value)}
             />
           </div>
-          <div className="login-button">
-            <button type="submit" className="btn btn-primary">Registrarse</button>
-          </div>
+          <button type="submit" className="btn btn-primary">Registrarse</button>
           <p className="text-center mt-3">
             ¿Ya tienes una cuenta?{' '}
             <span

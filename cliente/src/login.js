@@ -62,9 +62,7 @@ const Login = () => {
               onChange={(e) => setPassword(e.target.value)}
             />
           </div>
-          <div className="login-button">
-            <button type="submit" className="btn btn-primary">Iniciar Sesión</button>
-          </div>
+          <button type="submit" className="btn btn-primary">Iniciar Sesión</button>
           <p className="text-center mt-3">
             ¿No tienes una cuenta?{' '}
             <span
