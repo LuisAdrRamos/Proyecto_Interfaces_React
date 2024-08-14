@@ -17,10 +17,10 @@ const NavBar = () => (
           <Link className='nav-link' to={'/tecladosOficina'}>Teclados de Oficina</Link>
         </li>
         <li className="nav-item">
-          <Link className='nav-link' to={'/tecladosOficina'}>Teclados de Oficina</Link>
+          <Link className='nav-link' to={'/tecladosMecanicos'}>Teclados de Oficina</Link>
         </li>
         <li className="nav-item">
-          <Link className='nav-link' to={'/tecladosOficina'}>Teclados de Oficina</Link>
+          <Link className='nav-link' to={'/tecladosCustom'}>Teclados de Oficina</Link>
         </li>
       </ul>
       <form className="d-flex">

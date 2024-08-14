@@ -13,7 +13,7 @@ const Footer = () => (
         <img src="https://freelogopng.com/images/all_img/1690643640twitter-x-icon-png.png" alt="redes" className="redes" />
       </a>
     </div>
-    <p>Derechos reservardos infor@cursos.com</p>
+    <p>Derechos reservardos a Grupo 5 - Diseño de Interfaces</p>
     <p>Quito - Ecuador</p>
   </footer>
 );
