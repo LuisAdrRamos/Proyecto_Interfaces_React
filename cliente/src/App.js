@@ -11,7 +11,10 @@ import Login from './login';
 import Register from './register';
 import Perfil from './perfil';
 import Carrito from './carrito';
-
+import TecladosOficina from './tecladosOficina';
+import TecladosMecanicos from './tecladosMecanicos';
+import TecladosCustom from './tecladosCustom';
+import { CartProvider } from './CartContext';
 export const UserContext = createContext(null);
 export const useUser = () => useContext(UserContext);
 
@@ -34,6 +37,7 @@ const AppContent = () => {
                   imgSrc="https://www.info-computer.com/img/cms/Blog%20Camila%20Sa/Teclado%20para%20Escribir%20o%20Trabajar%20en%20Oficina.jpg"
                   title="Teclados de Oficina"
                   text="Mejora tu productividad con nuestros teclados de oficina ergonómicos y duraderos."
+                  link='/tecladosOficina'
                 />
                 <Card
                   imgSrc="https://www.muycomputerpro.com/wp-content/uploads/2021/02/logitech_g_pro_x_mechanical_gaming_keyboard.jpg"
@@ -59,6 +63,9 @@ const AppContent = () => {
         <Route path="/register" element={<Register />} />
         <Route path="/perfil" element={<Perfil />} />
         <Route path="/carrito" element={<Carrito />} />
+        <Route path='/tecladosOficina' element={<TecladosOficina />}/>
+        <Route path='/tecladosMecanicos' element={<TecladosMecanicos/>}/>
+        <Route path='/tecladosCustom' element={<TecladosCustom/>}/>
       </Routes>
 
       {!noHeaderFooterRoutes.includes(location.pathname) && <Footer />}
@@ -78,9 +85,11 @@ const AppWrapper = () => {
 
   return (
     <UserContext.Provider value={{ userID, setUserID }}>
-      <Router>
-        <AppContent />
-      </Router>
+      <CartProvider>
+        <Router>
+          <AppContent />
+        </Router>
+      </CartProvider>
     </UserContext.Provider>
   );
 };

@@ -14,13 +14,13 @@ const NavBar = () => (
     <div className="collapse navbar-collapse" id="navbarNav">
       <ul className="navbar-nav me-auto">
         <li className="nav-item">
-          <a className="nav-link" href="/tecladosOficina">Teclados de Oficina</a>
+          <Link className='nav-link' to={'/tecladosOficina'}>Teclados de Oficina</Link>
         </li>
         <li className="nav-item">
-          <a className="nav-link" href="/tecladosMecanicos">Teclados Mecanicos</a>
+          <Link className='nav-link' to={'/tecladosOficina'}>Teclados de Oficina</Link>
         </li>
         <li className="nav-item">
-          <a className="nav-link" href="/tecladosCustom">Teclados Custom</a>
+          <Link className='nav-link' to={'/tecladosOficina'}>Teclados de Oficina</Link>
         </li>
       </ul>
       <form className="d-flex">
