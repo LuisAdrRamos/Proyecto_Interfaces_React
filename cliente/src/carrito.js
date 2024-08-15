@@ -43,6 +43,31 @@ const Carrito = () => {
         alert('Compra finalizada y guardada exitosamente.');
         dispatch({ type: 'CLEAR_CART' });
 
+        // Crear el contenido del archivo de texto
+        let contenido = 'Carrito de Compras:\n\n';
+        cart.forEach((item, index) => {
+          contenido += `Producto ${index + 1}:\n`;
+          contenido += `Nombre: ${item.title}\n`;
+          contenido += `Precio: $${item.price}\n\n`;
+        });
+        contenido += `Total: $${total.toFixed(2)}\n`;
+
+        // Crear un blob con el contenido
+        const blob = new Blob([contenido], { type: 'text/plain' });
+        const url = URL.createObjectURL(blob);
+
+        // Crear un enlace para la descarga
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = 'carrito.txt';
+
+        // Agregar el enlace al documento y simular un clic para descargar
+        document.body.appendChild(link);
+        link.click();
+
+        // Eliminar el enlace del documento
+        document.body.removeChild(link);
+
         // Refrescar la lista de compras después de guardar una nueva
         const response = await fetch(`http://localhost:5000/compras/${userID}`);
         const data = await response.json();
@@ -59,6 +84,27 @@ const Carrito = () => {
 
   const handleEliminarProducto = (index) => {
     dispatch({ type: 'REMOVE_FROM_CART', payload: index });
+  };
+
+  const handleEliminarCompra = async (compraID) => {
+    try {
+      const response = await fetch(`http://localhost:5000/eliminar-compra/${compraID}`, {
+        method: 'DELETE',
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        alert('Compra eliminada exitosamente.');
+        setCompras(compras.filter((compra) => compra.id !== compraID));
+      } else {
+        alert('Hubo un problema al eliminar la compra.');
+      }
+
+    } catch (error) {
+      console.error('Error al eliminar la compra:', error);
+      alert('Ocurrió un error al eliminar la compra.');
+    }
   };
 
   return (
@@ -107,17 +153,24 @@ const Carrito = () => {
           <div className='card-body'>
             {compras.length > 0 ? (
               compras.map((compra, index) => (
-                <div key={index} className="mb-3">
-                  <h5>Compra #{compra.id}</h5>
-                  <p><strong>Fecha:</strong> {new Date(compra.fecha).toLocaleString()}</p>
-                  <p><strong>Total:</strong> ${compra.total}</p>
-                  <p><strong>Productos:</strong></p>
-                  <ul>
-                    {JSON.parse(compra.productos).map((producto, i) => (
-                      <li key={i}>{producto.title} - ${producto.price}</li>
-                    ))}
-                  </ul>
-                  <hr />
+                <div key={index} className="d-flex justify-content-between align-items-center mb-3">
+                  <div>
+                    <h5 className="mb-0">Compra #{compra.id}</h5>
+                    <p className="mb-0"><strong>Fecha:</strong> {new Date(compra.fecha).toLocaleString()}</p>
+                    <p className="mb-0"><strong>Total:</strong> ${compra.total}</p>
+                    <p className="mb-0"><strong>Productos:</strong></p>
+                    <ul className="mb-0">
+                      {JSON.parse(compra.productos).map((producto, i) => (
+                        <li key={i}>{producto.title} - ${producto.price}</li>
+                      ))}
+                    </ul>
+                  </div>
+                  <button
+                    className="btn btn-danger ml-3"
+                    onClick={() => handleEliminarCompra(compra.id)}
+                  >
+                    Cancelar Compra
+                  </button>
                 </div>
               ))
             ) : (

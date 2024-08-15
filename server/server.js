@@ -146,3 +146,19 @@ app.get('/compras/:userID', (req, res) => {
     return res.status(200).json(result);
   });
 });
+
+app.delete('/eliminar-compra/:id', (req, res) => {
+  const { id } = req.params;
+
+  const sql = "DELETE FROM compras WHERE id = ?";
+  db.query(sql, [id], (err, result) => {
+    if (err) {
+      console.error("Error al eliminar la compra:", err);
+      return res.status(500).json({ success: false, message: "Error al eliminar la compra" });
+    }
+    if (result.affectedRows === 0) {
+      return res.status(404).json({ success: false, message: "Compra no encontrada" });
+    }
+    return res.status(200).json({ success: true, message: "Compra eliminada exitosamente" });
+  });
+});
