@@ -109,7 +109,7 @@ const Carrito = () => {
 
   return (
     <div className='container-fluid vw-200 vh-100'>
-      <div className="col-md-8 col-lg-6 mx-auto">
+      <div className="col-md-10 col-lg-6 mx-auto">
         <div className="card">
           <div className="card-header bg-custom text-white">
             <h1 className="mb-0">Carrito de compras</h1>
