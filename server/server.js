@@ -119,3 +119,30 @@ app.delete('/perfil/:id', (req, res) => {
     return res.status(200).json({ success: true, message: "Cuenta borrada exitosamente" });
   });
 });
+
+app.post('/guardar-compra', (req, res) => {
+  const { userID, productos, total } = req.body;
+
+  const sql = "INSERT INTO compras (user_id, productos, total, fecha) VALUES (?, ?, ?, NOW())";
+  const productosJSON = JSON.stringify(productos);
+  db.query(sql, [userID, productosJSON, total], (err, result) => {
+    if (err) {
+      console.error("Error al guardar la compra:", err);
+      return res.status(500).json({ success: false, message: "Error al guardar la compra" });
+    }
+    return res.status(201).json({ success: true, message: "Compra guardada exitosamente" });
+  });
+});
+
+app.get('/compras/:userID', (req, res) => {
+  const { userID } = req.params;
+  const sql = "SELECT * FROM compras WHERE user_id = ? ORDER BY fecha DESC";
+
+  db.query(sql, [userID], (err, result) => {
+    if (err) {
+      console.error("Error al obtener las compras:", err);
+      return res.status(500).json({ success: false, message: "Error al obtener las compras" });
+    }
+    return res.status(200).json(result);
+  });
+});
