@@ -43,7 +43,6 @@ const Carrito = () => {
         alert('Compra finalizada y guardada exitosamente.');
         dispatch({ type: 'CLEAR_CART' });
 
-        // Crear el contenido del archivo de texto
         let contenido = 'Carrito de Compras:\n\n';
         cart.forEach((item, index) => {
           contenido += `Producto ${index + 1}:\n`;
@@ -52,23 +51,18 @@ const Carrito = () => {
         });
         contenido += `Total: $${total.toFixed(2)}\n`;
 
-        // Crear un blob con el contenido
         const blob = new Blob([contenido], { type: 'text/plain' });
         const url = URL.createObjectURL(blob);
 
-        // Crear un enlace para la descarga
         const link = document.createElement('a');
         link.href = url;
         link.download = 'carrito.txt';
 
-        // Agregar el enlace al documento y simular un clic para descargar
         document.body.appendChild(link);
         link.click();
 
-        // Eliminar el enlace del documento
         document.body.removeChild(link);
 
-        // Refrescar la lista de compras después de guardar una nueva
         const response = await fetch(`http://localhost:5000/compras/${userID}`);
         const data = await response.json();
         setCompras(data);
@@ -80,6 +74,7 @@ const Carrito = () => {
       console.error('Error al finalizar la compra:', error);
       alert('Ocurrió un error al guardar la compra.');
     }
+    window.location.reload();
   };
 
   const handleEliminarProducto = (index) => {
