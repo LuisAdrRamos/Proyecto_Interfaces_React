@@ -1,0 +1,13 @@
+recomendación 
+definir que categoría en que tipo de periféricos ()
+	back 
+		toda la api	
+
+	front
+		administrador / cliente (rol)
+
+	móvil
+		INFO DE donde se encuentra dichos periféricos (mapa en el movil)
+
+	
+	
